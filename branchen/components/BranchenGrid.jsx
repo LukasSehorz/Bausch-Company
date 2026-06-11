@@ -3,21 +3,22 @@ import React, { useState } from "react";
 const serif = "'EB Garamond', Georgia, serif";
 
 const sectors = [
-  { name: "Maschinenbau",   image: "/bild-14.png" },
-  { name: "Handel",         image: "/bild-15.png" },
-  { name: "Bau",            image: "/bild-16.png" },
-  { name: "Gesundheit",     image: "/bild-17.png" },
-  { name: "Tech",           image: "/bild-18.png" },
-  { name: "Konsumgüter",    image: "/bild-19.png" },
-  { name: "Logistik",       image: "/bild-20.png" },
-  { name: "Dienstleistung", image: "/bild-21.png" },
+  { name: "Maschinenbau",   image: "/bild-14.png", href: "/maschinenbau" },
+  { name: "Handel",         image: "/bild-15.png", href: "/handel" },
+  { name: "Bau",            image: "/bild-16.png", href: "/bau" },
+  { name: "Gesundheit",     image: "/bild-17.png", href: "/gesundheit" },
+  { name: "Tech",           image: "/bild-18.png", href: "/tech" },
+  { name: "Konsumgüter",    image: "/bild-19.png", href: "/konsumgueter" },
+  { name: "Logistik",       image: "/bild-20.png", href: "/logistik" },
+  { name: "Dienstleistung", image: "/bild-21.png", href: "/dienstleistung" },
 ];
 
-function SectorCard({ name, image }) {
+function SectorCard({ name, image, href }) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div
+    <a
+      href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -25,7 +26,9 @@ function SectorCard({ name, image }) {
         aspectRatio: "4 / 3",
         background: "#C8C2B8",
         overflow: "hidden",
-        cursor: "default",
+        cursor: "pointer",
+        display: "block",
+        textDecoration: "none",
       }}
     >
       {/* Hover image */}
@@ -111,7 +114,7 @@ function SectorCard({ name, image }) {
           </span>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 
@@ -202,7 +205,7 @@ export function BranchenGrid() {
         margin: "0 clamp(40px, 7%, 120px)",
       }}>
         {sectors.map((s) => (
-          <SectorCard key={s.name} name={s.name} image={s.image} />
+          <SectorCard key={s.name} name={s.name} image={s.image} href={s.href} />
         ))}
       </div>
     </section>
