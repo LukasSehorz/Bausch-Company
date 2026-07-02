@@ -82,7 +82,7 @@ export function Gallery5() {
         {/* Right — Johannes Bausch */}
         <div>
           <img
-            src="/bild-24.jpg"
+            src="/herr-bausch.png"
             alt="Johannes Bausch"
             style={{
               width: "100%",
